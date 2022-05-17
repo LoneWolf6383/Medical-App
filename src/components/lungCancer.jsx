@@ -1,12 +1,11 @@
 import React,{useState} from 'react'
-import {Form,Row,Col,Button, InputGroup} from 'react-bootstrap'
+import axios from 'axios'
+import { Form, Row, Col, Button, InputGroup } from 'react-bootstrap'
+import {TextField} from '@mui/material/TextField/TextField'
 import { NavBar } from './navbar'
 export const LungCancer = () => {
-    // const symptoms = ['SMOKING', 'YELLOW FINGERS', 'ANXIETY', 'PEER PRESSURE', 'CHRONIC DISEASE', 'FATIGUE', 'ALLERGY', 'WHEEZING', 'ALCOHOL CONSUMPTION', 'COUGHING', 'SHORTNESS OF BREATH', 'SWALLOWING DIFFICULTY', 'CHEST PAIN']
+    const [details, setDetails] = useState({})
     const symptoms = [
-        'UserID',
-        'AGE',
-        'Gender',
         'Smoking',
         'YellowFingers',
         'Anxiety',
@@ -24,7 +23,19 @@ export const LungCancer = () => {
     const handleChange = e => {
         const {name,value}=e.target
         setInput({ ...input, [name]: value })
-        console.log(input);
+    }
+    const handleSubmit = async () => {
+        const data = {}
+        Object.assign(data, input, details)
+        data['addcsrfmiddlewaretoken']='{{ csrf_token }}'
+        console.log(data); 
+        const { data: res } = fetch('http://127.0.0.1:8000/',{
+            method: 'POST',
+            body: JSON.stringify({
+                data
+            }),
+            }
+        )
     }
     return (
         <div>
@@ -34,18 +45,18 @@ export const LungCancer = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Password" />
+                    <TextField  type="text"  onChange={e=>setDetails({...details,'USerID':e.target.value})} />
                     </Form.Group>
                     <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <TextField  type="email" onChange={e=>setDetails({...details,'EMAIL':e.target.value})} />
                     </Form.Group>
                 </Row>
                     <h4>Lung Cancer Symptoms</h4>
                 <Row>
                 <Form.Group as={Col} className="mb-3" controlId="formGridAddress1">
                     <Form.Label >Age</Form.Label>
-                    <Form.Control style={{width:'100px'}}/>
+                    <TextField  style={{width:'100px'}} onChange={e=>setDetails({...details,'AGE':e.target.value})}/>
                 </Form.Group>
 
                 <Form.Group as={Col} className="mb-3" controlId="formGridAddress2">
@@ -69,17 +80,17 @@ export const LungCancer = () => {
                 }
                 <Form.Group className="mb-3" controlId="formGridAddress1">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control placeholder="1234 Main St" />
+                    <TextField/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGridAddress2">
                     <Form.Label>Address 2</Form.Label>
-                    <Form.Control placeholder="Apartment, studio, or floor" />
+                    <TextField/>
                 </Form.Group>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridCity">
                     <Form.Label>City</Form.Label>
-                    <Form.Control />
+                    <TextField  />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState">
@@ -91,10 +102,10 @@ export const LungCancer = () => {
 
                     <Form.Group as={Col} controlId="formGridZip">
                     <Form.Label>Zip</Form.Label>
-                    <Form.Control />
+                    <TextField  />
                     </Form.Group>
                 </Row>
-                <Button variant="primary" type="submit">
+                <Button variant="primary"  onClick={handleSubmit}>
                     Submit
                 </Button>
             </Form>  
