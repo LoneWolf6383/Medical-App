@@ -1,12 +1,13 @@
 import React from 'react'
-import {Navbar,Container,OffcanvasHeader, OffcanvasBody, OffcanvasTitle, Nav} from 'react-bootstrap'
+import { Navbar, Container, OffcanvasHeader, OffcanvasBody, OffcanvasTitle, Nav } from 'react-bootstrap'
+import logoImage from '../images/image_processing20210715-32557-vn32oq.png'
 export const NavBar = () => {
     return (
       <div  >
       <Navbar bg="dark" expand={''}>
             <Container fluid >
                 <Navbar.Brand href="#" style={{ color: 'white', }}>Medical App</Navbar.Brand>
-                    <img src={require('../images/image_processing20210715-32557-vn32oq.png')} style={{
+                    <img src={logoImage} style={{
                         width: '80px',
                         height: '50px',
                         backgroundColor: 'white',

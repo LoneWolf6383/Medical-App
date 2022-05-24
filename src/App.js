@@ -1,9 +1,9 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavBar } from './components/navbar';
+import { HomePage } from './pages/homePage';
 function App() {
   return (
-    <NavBar/>
+    <HomePage />
   );
 }
 
