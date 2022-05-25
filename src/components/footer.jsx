@@ -16,14 +16,14 @@ export const Footer = () => {
               <li>Namasivaayam L (202009027)</li>
               <li>Jegan V G (202009027)</li>
               <li>Davis Joshi A (202009009)</li>
-              <li>Sujit M (202009042)</li>
+              {/* <li>Sujit M (202009042)</li> */}
           </ul>
           <ul style={{
               justifyContent: 'space-evenly',
               display: 'flex',
               fontFamily:'Lucida Handwriting,Cursive',
           }}>
-              <li>Aritificial Intelligence Laboratory</li>
+              {/* <li>Aritificial Intelligence Laboratory</li> */}
               <li>Data Analytics Laboratory</li>
           </ul>
     </div>

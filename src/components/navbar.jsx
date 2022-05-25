@@ -6,7 +6,7 @@ export const NavBar = () => {
       <div  >
       <Navbar bg="dark" expand={''}>
             <Container fluid >
-                <Navbar.Brand href="#" style={{ color: 'white', }}>Medical App</Navbar.Brand>
+                <Navbar.Brand href="/" style={{ color: 'white', }}>Medical App</Navbar.Brand>
                     <img src={logoImage} style={{
                         width: '80px',
                         height: '50px',
@@ -19,7 +19,16 @@ export const NavBar = () => {
                     </OffcanvasHeader>
                     <OffcanvasBody>
                         <Nav>
-                            <Nav.Link href='/lungcancer'>Lung Cancer Analysis</Nav.Link>
+                            <Nav.Link href='/lung_cancer'>Lung Cancer Analysis</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href='/heart_disease'>Heart Disease Analysis</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href='/hypo_thyroid'>Hypo Thyroid Analysis</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href='/diabetes'>Diabetes Analysis</Nav.Link>
                         </Nav>
                     </OffcanvasBody>
                 </Navbar.Offcanvas>

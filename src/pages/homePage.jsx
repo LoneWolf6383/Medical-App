@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Form, Row, Col , Button } from 'react-bootstrap'
 import { TextField } from '@mui/material'
 import { NavBar } from '../components/navbar'
@@ -10,10 +10,14 @@ import LocationCityIcon from '@mui/icons-material/LocationCity';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import bgImage from '../images/Image-Content-what-doctors-want.png'
 import { Footer } from '../components/footer';
+import axios from 'axios'
 export const HomePage = () => {
-    const details={}
-    const handleSubmit = () => {
-        console.log(details);
+    const details = {}
+    const [flag, setFlag] = useState(0)
+    const handleSubmit = async () => {
+        const { data: res } = await axios.post('http://localhost:3001/addUser', details)
+        console.log(res);
+        res && setFlag(1)
     }
     return (
         <>
@@ -85,7 +89,8 @@ export const HomePage = () => {
                     <Row className="mb-3">
                         <Form.Group as={Col} className="mb-3" controlId="formGridSubmit"
                             style={{ justifyContent: 'space-between', alignItems: 'center', position: 'relative', left: '30%' }}>
-                            <Button onClick={handleSubmit}>Submit</Button>
+                                <Button onClick={handleSubmit}>Submit</Button>
+                                {flag===1 && <p style={{position:'relative',left:'-30%'}}>Now Choose the Disease In the Menu Option</p>}
                         </Form.Group>
                     </Row>
                     <Row>
